@@ -1,0 +1,24 @@
+<h1>Add Queue</h1>
+
+<%= form_with(model: customer) do |form| %>
+    <div class="field">
+        <%= form.label :"Customer name:" %>
+        <%= form.text_field :customer_name, placeholder: "Michael Scott" %>
+    </div>
+
+    <div class="field">
+        <%= form.label :"Mobile number:" %>
+        <%= form.text_field :mobile_number, placeholder: "09771236969" %>
+    </div>
+
+    <div class="field">
+        <%= form.label :"How many people?:" %>
+        <%= form.text_field :pax, placeholder: "7" %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Back', customers_path %>
