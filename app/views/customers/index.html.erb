@@ -2,8 +2,20 @@
 
 <% @customers.each do |customer| %>
     <% if customer.is_served == true && customer.served_at == nil %>
+        <div>
+            Queuing number: <%= customer.queuing_number %></br>
+            Name: <%= customer.customer_name %></br>
+            Mobile number: <%= customer.mobile_number %></br>
+            Pax: <%= customer.pax %>
+            </br>
+            <%= button_to 'Done', done_serve_customer_path(customer), method: :put %>
+            </br></br>
+        </div>
+    <% end %>
+<% end %>
 
-    <% elsif customer.is_served == false %>
+<% @customers.each do |customer| %>
+    <% if customer.is_served == false %>
         <div>
             Queuing number: <%= customer.queuing_number %></br>
             Name: <%= customer.customer_name %></br>

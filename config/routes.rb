@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :customers do
     member do
       put 'serve'
+      put 'done_serve'
     end
   end
 

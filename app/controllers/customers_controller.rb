@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-    before_action :set_customer, only: [ :serve ]
+    before_action :set_customer, only: [ :serve, :done_serve ]
 
     def index
         @customers = Customer.all
@@ -11,6 +11,7 @@ class CustomersController < ApplicationController
 
     def create
         @customer = Customer.new(customer_params)
+        @customer.queued_at = Date.current
         @customer.queuing_number = Customer.count + 1
 
         if @customer.save
@@ -22,6 +23,11 @@ class CustomersController < ApplicationController
 
     def serve
         @customer.update(is_served: true)
+        redirect_to customers_path
+    end
+
+    def done_serve
+        @customer.update(served_at: Date.current)
         redirect_to customers_path
     end
 
