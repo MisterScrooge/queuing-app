@@ -15,8 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_032945) do
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
+    t.integer "queuing_number", default: 0
     t.string "customer_name"
-    t.integer "mobile_number"
+    t.string "mobile_number"
     t.integer "pax"
     t.datetime "queued_at"
     t.datetime "served_at"

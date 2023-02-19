@@ -1,0 +1,19 @@
+<h1>Burgir King</h1>
+
+<% @customers.each do |customer| %>
+    <% if customer.is_served == true && customer.served_at == nil %>
+
+    <% elsif customer.is_served == false %>
+        <div>
+            Queuing number: <%= customer.queuing_number %></br>
+            Name: <%= customer.customer_name %></br>
+            Mobile number: <%= customer.mobile_number %></br>
+            Pax: <%= customer.pax %>
+            </br>
+            <%= button_to 'Serve', serve_customer_path(customer), method: :put %>
+            </br></br>
+        </div>
+    <% end %>
+<% end %>
+
+<%= link_to 'Add Queue', new_customer_path, class: "nav-link" %>
